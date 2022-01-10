@@ -182,4 +182,40 @@ import ReactDOM from 'react-dom'
 //   }
 // }
 
+//State参数
+class App extends React.Component{
+    //普通写法，使用constructor和super
+    // constructor(){
+    //     super()
+    //     //initialize state
+
+    //     this.state = {
+    //         count : 0
+    //     }
+    // }
+
+    //简单写法，直接state = {}就可以了
+    state = {
+        count : 0,
+        test : 'a'
+    }
+
+    //State改变function 使用指针函数来创建modifier。this的指针一定要指向我们的组件
+    onIncrement = () =>{
+        this.setState({
+        count : this.state.count + 1
+    })
+    }
+
+    render(){
+        return(
+            <div>
+                <h1>counter : {this.state.count}</h1>
+                {/* 直接在我们的元素里面加入事件和我们的state改变function */}
+                <button onClick={this.onIncrement}>Increment</button>
+            </div>
+        )
+    }
+}
+
 ReactDOM.render(<App />,document.getElementById('root'))
